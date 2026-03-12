@@ -1,0 +1,301 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Healthcare Blues - Trust & Professionalism */
+    --background: 210 20% 98%;
+    --foreground: 215 28% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+
+    /* Primary: Deep Trust Blue #1F4788 */
+    --primary: 216 63% 33%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Medium Blue #2E5C8A */
+    --secondary: 209 50% 36%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted backgrounds — text darkened to #595959 for WCAG AA */
+    --muted: 210 20% 96%;
+    --muted-foreground: 0 0% 35%;
+
+    /* Accent: Bright Sky Blue #0EA5E9 */
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Status Colors */
+    --destructive: 0 84% 42%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 35%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 38%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Borders — increased contrast against white (#B0BFCE → #8A9BB3) */
+    --border: 214 28% 65%;
+    --input: 214 28% 65%;
+    --ring: 199 89% 48%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar-background: 216 63% 33%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 209 50% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 209 50% 42%;
+    --sidebar-ring: 199 89% 48%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(216 63% 33%) 0%, hsl(209 50% 36%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(209 50% 36%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(216 63% 33%) 0%, hsl(199 89% 48%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 15%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 15%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 209 50% 36%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted text lightened to #B0B0B0 for WCAG AA */
+    --muted: 217 33% 20%;
+    --muted-foreground: 0 0% 69%;
+
+    --accent: 216 63% 50%;
+    --accent-foreground: 210 40% 98%;
+
+    /* Status — slightly lightened for dark mode readability */
+    --destructive: 0 72% 58%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 65% 50%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 55%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Borders — increased contrast in dark mode */
+    --border: 217 33% 40%;
+    --input: 217 33% 40%;
+    --ring: 199 89% 48%;
+
+    --sidebar-background: 222 47% 9%;
+    --sidebar-foreground: 210 40% 95%;
+    --sidebar-primary: 199 89% 60%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 217 33% 20%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 32%;
+    --sidebar-ring: 199 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  /* WCAG AA focus rings — 2px accent blue on all interactive elements */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Placeholder text — WCAG AA minimum #767676 */
+  ::placeholder {
+    color: hsl(0 0% 46%);
+    opacity: 1;
+  }
+
+  .dark ::placeholder {
+    color: hsl(0 0% 63%);
+    opacity: 1;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 shadow-lg;
+  }
+
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  /* Status badges — all verified WCAG AA text/bg contrast */
+  .status-current {
+    background-color: hsl(142 71% 35% / 0.12);
+    color: hsl(142 71% 28%);
+  }
+
+  .dark .status-current {
+    background-color: hsl(142 65% 50% / 0.18);
+    color: hsl(142 65% 65%);
+  }
+
+  .status-expiring {
+    background-color: hsl(38 92% 38% / 0.12);
+    color: hsl(38 85% 30%);
+  }
+
+  .dark .status-expiring {
+    background-color: hsl(38 92% 55% / 0.18);
+    color: hsl(38 92% 65%);
+  }
+
+  .status-urgent {
+    background-color: hsl(0 84% 42% / 0.12);
+    color: hsl(0 84% 36%);
+  }
+
+  .dark .status-urgent {
+    background-color: hsl(0 72% 58% / 0.18);
+    color: hsl(0 80% 70%);
+  }
+
+  .status-expired {
+    background-color: hsl(0 0% 35% / 0.10);
+    color: hsl(0 0% 35%);
+  }
+
+  .dark .status-expired {
+    background-color: hsl(0 0% 69% / 0.15);
+    color: hsl(0 0% 69%);
+  }
+
+  .health-score-excellent { @apply text-success; }
+  .health-score-good      { @apply text-success; }
+  .health-score-warning   { @apply text-warning; }
+  .health-score-critical  { @apply text-destructive; }
+
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200;
+  }
+
+  .nav-link-active {
+    @apply bg-sidebar-accent text-sidebar-foreground;
+  }
+
+  .nav-link-inactive {
+    /* text-sidebar-foreground/90 gives ~4.5:1 on sidebar blue */
+    color: hsl(0 0% 100% / 0.90);
+  }
+
+  .nav-link-inactive:hover {
+    background-color: hsl(var(--sidebar-accent) / 0.7);
+    color: hsl(0 0% 100%);
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .btn-primary-gradient {
+    background: var(--gradient-primary);
+    @apply text-white shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5;
+  }
+
+  .btn-accent-gradient {
+    background: var(--gradient-accent);
+    @apply text-white shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5;
+  }
+
+  /* Disabled button — meets 3:1 minimum */
+  button:disabled,
+  [disabled] {
+    opacity: 0.55;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar        { width: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-track  { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb  {
+    background-color: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+}
